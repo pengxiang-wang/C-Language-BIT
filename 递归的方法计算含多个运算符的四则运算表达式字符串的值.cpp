@@ -1,0 +1,53 @@
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+	char a[100];int i,j,k,l;
+	gets(a);
+	l=strlen(a);
+	for(i=0;i<l;i++)
+	{
+		if(a[i]=='*')
+		{
+			for(j=i-1;a[j]==0;j--);
+			for(k=i+1;a[k]==0;k++);
+			a[i]=(a[j]-'0')*(a[k]-'0')+'0';
+			a[j]=0;a[k]=0;
+		}
+	}
+	for(i=0;i<l;i++)
+	{
+		if(a[i]=='/')
+		{
+			for(j=i-1;a[j]==0;j--);
+			for(k=i+1;a[k]==0;k++);
+			a[i]=(a[j]-'0')/(a[k]-'0')+'0';
+			a[j]=0;a[k]=0;
+		}
+	}
+	for(i=0;i<l;i++)
+	{
+		if(a[i]=='+')
+		{
+			for(j=i-1;a[j]==0;j--);
+			for(k=i+1;a[k]==0;k++);
+			a[i]=a[j]+a[k]-'0';
+			a[j]=0;a[k]=0;
+		}
+	}
+	for(i=0;i<l;i++)
+	{
+		if(a[i]=='-')
+		{
+			for(j=i-1;a[j]==0;j--);
+			for(k=i+1;a[k]==0;k++);
+			a[i]=a[j]-a[k]+'0';
+			a[j]=0;a[k]=0;
+		}
+	}
+	for(i=0;i<l;i++)
+	{
+		if(a[i]!=0)
+		printf("%c\n",a[i]);
+	}
+}
